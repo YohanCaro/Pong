@@ -30,7 +30,6 @@ public class GamePanel extends JPanel implements Runnable {
 		rectangle2 = new MyRectangle(800, Constants.MAX_Y/2, 20, 100, new Color(2, 177, 255), Color.CYAN, new BasicStroke(2));
 		
 		inicializarBooleanos();
-//		this.addKeyListener(GameListener.getInstanceOf());
 		start();
 	}
 	
@@ -51,21 +50,16 @@ public class GamePanel extends JPanel implements Runnable {
 		g.drawString("PONG!", Constants.MAX_X/2, 50);
 		
 		if (!GameListener.enter && !play) {
-//			g.drawString("Press ENTER", Constants.MAX_X/2, Constants.MAX_Y/2);
 			this.throwMessage("Press ENTER", (Graphics2D) g);
 		} else {
 			if (!play) {
-				System.out.println("empezó");
 				play = true;
-//				this.actThreads();
 			}
 		}
 		
 		if (pause) {
 			this.throwMessage("Pause", (Graphics2D) g);
 		}
-	
-		
 	}
 	
 	public void start() {

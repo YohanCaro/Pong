@@ -2,6 +2,9 @@ package co.edu.uptc.controller;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+
+import javax.swing.JOptionPane;
 
 import co.edu.uptc.view.GamePanel;
 
@@ -18,7 +21,6 @@ public class GameListener extends KeyAdapter {
 	
 	private GameListener(GamePanel gamePanel) {
 		this.gamePanel = gamePanel;
-		System.out.println("listener");
 	}
 	
 	@Override
@@ -47,6 +49,16 @@ public class GameListener extends KeyAdapter {
 		
 		if (key == KeyEvent.VK_SPACE){
 			gamePanel.setPause(!gamePanel.isPause());
+		}
+		
+		if (key == KeyEvent.VK_ESCAPE) {
+			Object [] opciones ={"Aceptar","Cancelar"};
+			int eleccion = JOptionPane.showOptionDialog(null, "¿Desea salir del juego?","Mensaje de Confirmacion!",
+			JOptionPane.YES_NO_OPTION,
+			JOptionPane.QUESTION_MESSAGE,null,opciones,"Aceptar");
+			if (eleccion == JOptionPane.YES_OPTION) {
+				System.exit(0);
+			}
 		}
 
 	}
