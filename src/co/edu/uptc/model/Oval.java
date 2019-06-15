@@ -63,24 +63,33 @@ public class Oval extends Thread {
 		}
 	}
 	
+	public void move() {
+		x += isX?1:-1;
+		y += isY?2:-2;
+		if (x < 0) {
+			isX = true;
+		} 
+		if (x > Constants.MAX_X) {
+			isX = false;
+		}
+		if (y < 0) {
+			isY = true;
+		}
+		if (y > Constants.MAX_Y) {
+			isY = false;
+		}
+	}
+	
 	public void intercept(MyRectangle rectangle) {
 		Ellipse2D elipse = new Ellipse2D.Double(x, y, size, size);
 		
 		if (elipse.intersects(new Rectangle2D.Double(rectangle.getX(), rectangle.getY(), rectangle.getWidth(),
 				rectangle.getHeight()))) {
 			
-			if (rectangle.getY() > elipse.getY()-1 || rectangle.getY()+rectangle.getHeight() < elipse.getY()+1) {
-				if (isY) {
-					isY = false;
-				} else {
-					isY = true;
-				}
+			if (rectangle.getY() > elipse.getY()+size-10 || rectangle.getY()+rectangle.getHeight() < elipse.getY()+size-10) {
+				isY = !isY;
 			} else {
-				if (isX) {
-					isX = false;
-				} else {
-					isX = true;
-				}
+				isX = !isX;
 			}
 
 		} 
