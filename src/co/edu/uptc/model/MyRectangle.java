@@ -64,15 +64,15 @@ public class MyRectangle extends Thread {
 	public void move(int n) {
 		if (n==1) {
 			if (GameListener.up && y > 0) {
-				y -= 1;
+				y -= 2;
 			} else if (GameListener.down && y < Constants.MAX_Y-70) {
-				y += 1;
+				y += 2;
 			}
 		} else {
 			if (GameListener.w && y > 0) {
-				y -= 1;
+				y -= 2;
 			} else if (GameListener.s && y < Constants.MAX_Y-70) {
-				y += 1;
+				y += 2;
 			}
 		}
 	}

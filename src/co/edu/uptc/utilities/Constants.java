@@ -15,5 +15,15 @@ public class Constants {
 	
 	public static final int SIZE_WIDTH = 1000;
 	public static final int SIZE_HEIGHT = 725;
+	
+	public static final String ACTION_NEW_GAME = "ACTION_NEW_GAME";
+	public static final String ACTION_TWO_PLAYERS = "ACTION_TWO_PLAYERS";
+	public static final String ACTION_MULTIPLAYER = "ACTION_MULTIPLAYER";
+	public static final String ACTION_ABOUT = "ACTION_ABOUT";
+	public static final String ACTION_CLOSE_MENU_WINDOW = "ACTION_CLOSE_MENU_WINDOW";
+	
+	public static final String CARD_MENU_GAME = "CARD_MENU_GAME";
+	public static final String CARD_MAIN_WINDOW = "CARD_MAIN_WINDOW";
+	public static final String CARD_GAME = "CARD_GAME";
 
 }
