@@ -68,9 +68,8 @@ public class Oval extends Thread {
 		
 		if (elipse.intersects(new Rectangle2D.Double(rectangle.getX(), rectangle.getY(), rectangle.getWidth(),
 				rectangle.getHeight()))) {
-			System.out.println("in");
 			
-			if (rectangle.getY() > elipse.getY() || rectangle.getY()+rectangle.getHeight() < elipse.getY()) {
+			if (rectangle.getY() > elipse.getY()-1 || rectangle.getY()+rectangle.getHeight() < elipse.getY()+1) {
 				if (isY) {
 					isY = false;
 				} else {
