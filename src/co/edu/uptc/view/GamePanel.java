@@ -16,18 +16,22 @@ import co.edu.uptc.model.MyRectangle;
 
 public class GamePanel extends JPanel implements Runnable {
 	
+	public int time;
 	private static final long serialVersionUID = 1L;
 	private MyRectangle rectangle, rectangle2;
 	private Oval ball;
+	private HelpPane helpPane;
 	private boolean play, pause, dead;
 	
 	public GamePanel(ButtonsListener buttonsListener) {
 		this.setLayout(null);
 		this.setBounds(0, 20, Constants.SIZE_WIDTH, Constants.SIZE_HEIGHT);
 		
+		time = 14;
 		ball = new Oval(300, 250, 30, new Color(7, 246, 94), Color.GREEN, new BasicStroke(2));
 		rectangle = new MyRectangle(20, Constants.MAX_Y/2, 20, 100, new Color(2, 177, 255), Color.CYAN, new BasicStroke(2));
 		rectangle2 = new MyRectangle(800, Constants.MAX_Y/2, 20, 100, new Color(2, 177, 255), Color.CYAN, new BasicStroke(2));
+		helpPane = new HelpPane();
 		
 		inicializarBooleanos();
 		start();
@@ -59,8 +63,10 @@ public class GamePanel extends JPanel implements Runnable {
 		
 		if (pause && play) {
 			this.throwMessage("Pause", (Graphics2D) g);
-		}
-		
+		}		
+		helpPane.draw((Graphics2D) g);
+		g.setColor(Color.WHITE);
+		this.throwMessage("Speed: " + time, (Graphics2D) g, 500, 600);
 		this.getWin((Graphics2D) g);
 	}
 	
@@ -82,7 +88,7 @@ public class GamePanel extends JPanel implements Runnable {
 				ball.move();
 			}
 			try {
-				Thread.sleep(14);
+				Thread.sleep(time);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -120,6 +126,10 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	public void throwMessage(String message, Graphics2D g) {
 		g.drawString(message, Constants.MAX_X/2, Constants.MAX_Y/2+20);
+	}
+	
+	public void throwMessage(String message, Graphics2D g, int x, int y) {
+		g.drawString(message, x, y);
 	}
 	
 	/**
