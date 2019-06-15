@@ -52,6 +52,7 @@ public class GameListener extends KeyAdapter {
 		}
 		
 		if (key == KeyEvent.VK_ESCAPE) {
+			gamePanel.setPause(true);
 			Object [] opciones ={"Aceptar","Cancelar"};
 			int eleccion = JOptionPane.showOptionDialog(null, "¿Desea salir del juego?","Mensaje de Confirmacion!",
 			JOptionPane.YES_NO_OPTION,
