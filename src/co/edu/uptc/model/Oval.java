@@ -2,14 +2,13 @@ package co.edu.uptc.model;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
 import co.edu.uptc.utilities.Constants;
 
-public class Oval extends Thread {
+public class Oval {
 	
 	private int x, y, size;
 	private Color backgroundColor, borderColor;
@@ -35,32 +34,6 @@ public class Oval extends Thread {
 		g2.fillOval(x, y, size, size);
 		g2.setStroke(bs);
 		g2.setColor(backgroundColor);
-	}
-	
-	@Override
-	public void run() {
-		while (isAvailable) {
-			x += isX?1:-1;
-			y += isY?2:-2;
-			if (x < 0) {
-				isX = true;
-			} 
-			if (x > Constants.MAX_X) {
-				isX = false;
-			}
-			if (y < 0) {
-				isY = true;
-			}
-			if (y > Constants.MAX_Y) {
-				isY = false;
-			}
-						
-			try {
-				sleep(15);
-			} catch (InterruptedException e) {
-				System.out.println("Hilo de la bolita se murió");
-			}
-		}
 	}
 	
 	public void move() {
