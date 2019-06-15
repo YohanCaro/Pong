@@ -13,7 +13,7 @@ public class Oval {
 	private int x, y, size;
 	private Color backgroundColor, borderColor;
 	private BasicStroke bs;
-	private boolean isAvailable;
+	private boolean isLive;
 	private boolean isX, isY;
 	
 	public Oval(int x, int y, int size, Color backgroundColor, Color borderColor, BasicStroke bs) {
@@ -23,7 +23,7 @@ public class Oval {
 		this.x = x;
 		this.y = y;
 		this.size = size;
-		isAvailable = true;
+		isLive = true;
 		
 		isX = true;
 		isY = true;
@@ -39,18 +39,25 @@ public class Oval {
 	public void move() {
 		x += isX?1:-1;
 		y += isY?2:-2;
-		if (x < 0) {
-			isX = true;
-		} 
-		if (x > Constants.MAX_X) {
-			isX = false;
+		
+		if (minorX() || maxX()) {
+			isLive = false;
 		}
+		
 		if (y < 0) {
 			isY = true;
 		}
 		if (y > Constants.MAX_Y) {
 			isY = false;
 		}
+	}
+	
+	public boolean minorX() {
+		return (x < 0);
+	}
+	
+	public boolean maxX() {
+		return (x > Constants.MAX_X);
 	}
 	
 	public void intercept(MyRectangle rectangle) {
@@ -72,9 +79,17 @@ public class Oval {
 	 * Obtiene 
 	 * @return isAvailable
 	 */
-	public boolean isAvailable() {
-		return isAvailable;
+	public boolean isLive() {
+		return isLive;
 	}	
+	
+	/**
+	 * Cambia 
+	 * @param isLive the isLive to set
+	 */
+	public void setLive(boolean isLive) {
+		this.isLive = isLive;
+	}
 
 	public int getX() {
 		return x;
@@ -107,5 +122,5 @@ public class Oval {
 	public Color getColorBorde() {
 		return borderColor;
 	}	
-
+	
 }

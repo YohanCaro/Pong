@@ -19,7 +19,7 @@ public class GamePanel extends JPanel implements Runnable {
 	private static final long serialVersionUID = 1L;
 	private MyRectangle rectangle, rectangle2;
 	private Oval ball;
-	private boolean play, pause;
+	private boolean play, pause, dead;
 	
 	public GamePanel(ButtonsListener buttonsListener) {
 		this.setLayout(null);
@@ -57,19 +57,23 @@ public class GamePanel extends JPanel implements Runnable {
 			}
 		}
 		
-		if (pause) {
+		if (pause && play) {
 			this.throwMessage("Pause", (Graphics2D) g);
 		}
+		
+		this.getWin((Graphics2D) g);
 	}
 	
 	public void start() {
+		ball.setX(Constants.DEFAULT_X);
+		ball.setY(Constants.DEFAULT_Y);
+		ball.setLive(true);
 		new Thread(this).start();
 	}
 	
 	@Override
 	public void run() {
-		
-		while (true) {
+		while (ball.isLive()) {
 			this.repaint();
 			if (play && !pause) {
 				ball.intercept(rectangle);
@@ -77,11 +81,21 @@ public class GamePanel extends JPanel implements Runnable {
 				this.move();
 				ball.move();
 			}
-
 			try {
-				Thread.sleep(15);
+				Thread.sleep(14);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void getWin(Graphics2D g) {
+		if (!ball.isLive()) {
+			play = false;
+			if (ball.minorX()) {
+				this.throwMessage("Player 2 WIN!", g);
+			} else if (ball.maxX()) {
+				this.throwMessage("Player 1 WIN!", g);
 			}
 		}
 	}
@@ -90,6 +104,10 @@ public class GamePanel extends JPanel implements Runnable {
 		rectangle.move(2);
 		rectangle2.move(1);
 	}
+	
+	public boolean isDead() {
+		return !ball.isLive();
+	}
 		
 	/**
 	 * Metodos inicializadores!
@@ -97,6 +115,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public void inicializarBooleanos() {
 		play = false;
 		pause = false;
+		dead = false;
 	}
 	
 	public void throwMessage(String message, Graphics2D g) {

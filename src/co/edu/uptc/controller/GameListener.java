@@ -61,6 +61,12 @@ public class GameListener extends KeyAdapter {
 				System.exit(0);
 			}
 		}
+		
+		if (key == KeyEvent.VK_R) {
+			if (gamePanel.isDead()) {
+				gamePanel.start();
+			}
+		}
 
 	}
 	
