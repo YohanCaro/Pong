@@ -76,13 +76,14 @@ public class Oval extends Thread {
 				} else {
 					isY = true;
 				}
-			}
-			
-			if (isX) {
-				isX = false;
 			} else {
-				isX = true;
+				if (isX) {
+					isX = false;
+				} else {
+					isX = true;
+				}
 			}
+
 		} 
 	}
 	
