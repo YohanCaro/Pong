@@ -3,21 +3,26 @@
  */
 package co.edu.uptc.controller;
 
+import java.awt.Graphics2D;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-/**Clase GameListener.java - 
+import co.edu.uptc.view.GamePanel;
+
+/** Clase GameListener.java - 
  *
  * @author Yohan Caro
  * @version 1.0 - 14/06/2019
  */
 public class GameListener extends KeyAdapter {
 	
-	public static boolean up, down, w, s;
+	public static boolean up, down, w, s, enter, space;
+	private GamePanel gamePanel;
 	private static GameListener gameListener;
 	
-	private GameListener() {
-		
+	private GameListener(GamePanel gamePanel) {
+		this.gamePanel = gamePanel;
+		System.out.println("listener");
 	}
 	
 	@Override
@@ -39,6 +44,15 @@ public class GameListener extends KeyAdapter {
 		if (key == KeyEvent.VK_S) {
 			s = true;
 		}
+		
+		if (key == KeyEvent.VK_ENTER) {
+			enter = true;
+		}
+		
+		if (key == KeyEvent.VK_SPACE){
+			gamePanel.setPause(!gamePanel.isPause());
+		}
+
 	}
 	
 	@Override
@@ -60,11 +74,16 @@ public class GameListener extends KeyAdapter {
 		if (key == KeyEvent.VK_S) {
 			s = false;
 		}
+		
+		if (key == KeyEvent.VK_ENTER) {
+			enter = false;
+		}
+		
 	}
 	
-	public static GameListener getInstanceOf() {
+	public static GameListener getInstanceOf(GamePanel gamePanel) {
 		if (gameListener == null) {
-			gameListener = new GameListener();
+			gameListener = new GameListener(gamePanel);
 		}
 		return gameListener;
 	}
