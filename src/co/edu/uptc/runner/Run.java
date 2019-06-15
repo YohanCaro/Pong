@@ -1,7 +1,6 @@
 package co.edu.uptc.runner;
 
 import co.edu.uptc.view.MainWindow;
-import co.edu.uptc.view.MenuWindow;
 
 /**
  * Clase Run - 

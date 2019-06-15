@@ -2,8 +2,6 @@ package co.edu.uptc.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 import co.edu.uptc.utilities.Constants;
 import co.edu.uptc.view.MainWindow;
@@ -13,7 +11,7 @@ import co.edu.uptc.view.MainWindow;
  * @author Yohan Caro
  * @version 1.0 - 15/06/2019
  */
-public class ButtonsListener extends KeyAdapter implements ActionListener {
+public class ButtonsListener implements ActionListener {
 	
 	private MainWindow mainWindow;
 	
@@ -50,13 +48,5 @@ public class ButtonsListener extends KeyAdapter implements ActionListener {
 		}
 	}
 	
-	@Override
-	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-		System.out.println("e: " + e.getKeyChar());
-		if (key == KeyEvent.VK_ENTER) {
-			mainWindow.getGamePanel().actThreads();
-		}
-	}
 		
 }

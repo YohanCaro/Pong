@@ -1,11 +1,9 @@
 package co.edu.uptc.view;
 
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.awt.Color;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import co.edu.uptc.controller.ButtonsListener;
 import co.edu.uptc.controller.Control;
@@ -14,6 +12,7 @@ import co.edu.uptc.utilities.Constants;
 
 public class MainWindow extends JFrame {
 	
+	private static final long serialVersionUID = 1L;
 	private GamePanel gamePanel;
 	private MenuWindow menuWindow;
 //	private JPanel panelGroup;
@@ -29,7 +28,6 @@ public class MainWindow extends JFrame {
 		this.setLayout(new BorderLayout());
 		this.getContentPane().setBackground(Color.WHITE);
 		
-		this.addKeyListener(buttonsListener);
 		control = new Control();
 		buttonsListener = new ButtonsListener(this);
 		

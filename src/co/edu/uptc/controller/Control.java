@@ -1,10 +1,8 @@
 package co.edu.uptc.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.edu.uptc.exceptions.ComExceptions;
 import co.edu.uptc.model.Player;
 
 public class Control {

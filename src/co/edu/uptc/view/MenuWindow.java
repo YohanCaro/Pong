@@ -24,6 +24,7 @@ import co.edu.uptc.utilities.Constants;
  */
 public class MenuWindow extends JDialog {
 	
+	private static final long serialVersionUID = 1L;
 	private JLabel titleLabel;
 	private JButton newGameButton,twoPlayersButton, multiplayerButton, aboutButton, leftButton;
 	private ButtonsListener buttonsListener;

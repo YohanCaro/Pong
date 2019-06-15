@@ -5,8 +5,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.io.IOException;
-import java.util.Random;
 
 import javax.swing.JPanel;
 
@@ -18,9 +16,10 @@ import co.edu.uptc.model.MyRectangle;
 
 public class GamePanel extends JPanel implements Runnable {
 	
+	private static final long serialVersionUID = 1L;
 	private MyRectangle rectangle, rectangle2;
 	private Oval ball;
-	private boolean play, pause, space;
+	private boolean play, pause;
 	
 	public GamePanel(ButtonsListener buttonsListener) {
 		this.setLayout(null);
@@ -92,14 +91,7 @@ public class GamePanel extends JPanel implements Runnable {
 			}
 		}
 	}
-	
-	public void actThreads() {
-		if (play && !pause) {
-			ball.start();
-		}
-
-	}
-	
+		
 	public void move() {
 		rectangle.move(2);
 		rectangle2.move(1);
@@ -111,7 +103,6 @@ public class GamePanel extends JPanel implements Runnable {
 	public void inicializarBooleanos() {
 		play = false;
 		pause = false;
-		space = false;
 	}
 	
 	public void throwMessage(String message, Graphics2D g) {

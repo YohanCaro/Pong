@@ -3,12 +3,9 @@ package co.edu.uptc.model;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.geom.Rectangle2D;
 
 import co.edu.uptc.controller.GameListener;
 import co.edu.uptc.utilities.Constants;
-import co.edu.uptc.view.GamePanel;
 
 /**
  * Clase MyRectangle - 
