@@ -16,7 +16,7 @@ public class Constants {
 	public static final int DEFAULT_X = 385;
 	public static final int DEFAULT_Y = 275;
 	
-	public static final int SIZE_WIDTH = 1000;
+	public static final int SIZE_WIDTH = 1200;
 	public static final int SIZE_HEIGHT = 660;
 	
 	public static final String ACTION_NEW_GAME = "ACTION_NEW_GAME";

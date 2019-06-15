@@ -67,6 +67,18 @@ public class GameListener extends KeyAdapter {
 				gamePanel.start();
 			}
 		}
+		
+		if (key == KeyEvent.VK_PLUS) {
+			if (gamePanel.time > 6) {
+				gamePanel.time--;
+			}
+		}
+		
+		if (key == KeyEvent.VK_MINUS) {
+			if (gamePanel.time < 17) {
+				gamePanel.time++;
+			}
+		}
 
 	}
 	

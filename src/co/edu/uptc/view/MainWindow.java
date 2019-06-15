@@ -27,7 +27,8 @@ public class MainWindow extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setLayout(new BorderLayout());
-		this.getContentPane().setBackground(Color.WHITE);
+		this.getContentPane().setBackground(Color.DARK_GRAY);
+		this.setBackground(Color.DARK_GRAY);
 		
 		control = new Control();
 		buttonsListener = new ButtonsListener(this);
