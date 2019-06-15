@@ -40,7 +40,10 @@ public class AboutDialog extends JDialog {
 	}
 	
 	public void setMessage() {
-		message = "		V 0.2.1\n"
+		message = "		V 0.3\n"
+				+ "	* Opcion de reinicio\n"
+				+ "	* Adicion de muertes\n\n"
+				+ "		V 0.2.1\n"
 				+ "	* Ventana de about\n"
 				+ "	* Cuadros de indicaciones\n"
 				+ "	* Bug fixes\n"
