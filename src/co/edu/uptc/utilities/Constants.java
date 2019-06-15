@@ -13,8 +13,11 @@ public class Constants {
 	public static final int MAX_X = 800;
 	public static final int MAX_Y = 600;
 	
+	public static final int DEFAULT_X = 385;
+	public static final int DEFAULT_Y = 275;
+	
 	public static final int SIZE_WIDTH = 1000;
-	public static final int SIZE_HEIGHT = 725;
+	public static final int SIZE_HEIGHT = 660;
 	
 	public static final String ACTION_NEW_GAME = "ACTION_NEW_GAME";
 	public static final String ACTION_TWO_PLAYERS = "ACTION_TWO_PLAYERS";

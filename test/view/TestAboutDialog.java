@@ -5,7 +5,7 @@ package view;
 
 import co.edu.uptc.view.AboutDialog;
 
-/**Clase TestAboutDialog.java - 
+/**Clase TestAboutDialog - 
  *
  * @author Yohan Caro
  * @version 1.0 - 15/06/2019
