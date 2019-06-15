@@ -46,7 +46,7 @@ public class MyRectangle extends Thread {
 			if (y > Constants.MAX_Y-70) {
 				enter = false;
 			} 
-			if (y < 0) {
+			if (y < 1) {
 				enter = true;
 			}
 			y += (enter)?2:-2;
@@ -60,15 +60,26 @@ public class MyRectangle extends Thread {
 		
 	public void move(int n) {
 		if (n==1) {
-			if (GameListener.up && y > 0) {
+			if (GameListener.up && y > 1) {
 				y -= 2;
 			} else if (GameListener.down && y < Constants.MAX_Y-70) {
 				y += 2;
 			}
-		} else {
-			if (GameListener.w && y > 0) {
+		} else if (n == 2) {
+			if (GameListener.w && y > 1) {
 				y -= 2;
 			} else if (GameListener.s && y < Constants.MAX_Y-70) {
+				y += 2;
+			}
+		} else if (n == 3) {
+			if (GameListener.w && y > 1) {
+				y -= 2;
+			} else if (GameListener.s && y < Constants.MAX_Y-70) {
+				y += 2;
+			}
+			if (GameListener.up && y > 1) {
+				y -= 2;
+			} else if (GameListener.down && y < Constants.MAX_Y-70) {
 				y += 2;
 			}
 		}
