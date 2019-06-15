@@ -12,25 +12,27 @@ import javax.swing.JPanel;
 
 import co.edu.uptc.model.Oval;
 import co.edu.uptc.utilities.Constants;
+import co.edu.uptc.controller.GameListener;
 import co.edu.uptc.model.MyRectangle;
 
 public class GamePanel extends JPanel implements Runnable {
 	
 	private MyRectangle rectangle, rectangle2;
-	private Oval bola;
+	private Oval ball;
 	private boolean play, pause, space;
-	private MainWindow ventana;
+	private MainWindow window;
 	
-	public GamePanel(MainWindow ventana) {
-		this.ventana = ventana;
+	public GamePanel(MainWindow window) {
+		this.window = window;
 		this.setLayout(null);
 		this.setBounds(0, 20, Constants.SIZE_WIDTH, Constants.SIZE_HEIGHT);
 		
-		bola = new Oval(300, 250, 30, new Color(7, 246, 94), Color.GREEN, new BasicStroke(2));
+		ball = new Oval(300, 250, 30, new Color(7, 246, 94), Color.GREEN, new BasicStroke(2));
 		rectangle = new MyRectangle(20, Constants.MAX_Y/2, 20, 100, new Color(2, 177, 255), Color.CYAN, new BasicStroke(2));
 		rectangle2 = new MyRectangle(800, Constants.MAX_Y/2, 20, 100, new Color(2, 177, 255), Color.CYAN, new BasicStroke(2));
 		
 		inicializarBooleanos();
+		this.addKeyListener(GameListener.getInstanceOf());
 		this.start();
 	}
 	
@@ -44,7 +46,7 @@ public class GamePanel extends JPanel implements Runnable {
 		rectangle.draw((Graphics2D) g);
 		rectangle2.draw((Graphics2D) g);
 		
-		bola.draw((Graphics2D) g);
+		ball.draw((Graphics2D) g);
 		
 		g.setColor(Color.WHITE);		
 		g.setFont(new Font("Arial Black", 1, 20));
@@ -53,7 +55,7 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 	
 	public void start() {
-		bola.start();
+		ball.start();
 		this.actThreads();
 		new Thread(this).start();
 	}
@@ -61,15 +63,34 @@ public class GamePanel extends JPanel implements Runnable {
 	@Override
 	public void run() {
 		while (true) {
+			this.move();
 			this.repaint();
+			
+			ball.intercept(rectangle);
+			ball.intercept(rectangle2);
+			
+			try {
+				Thread.sleep(6);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
 	public void actThreads() {
 //		if (!play) {
-			this.rectangle.start();
-			this.rectangle2.start();
+//			this.rectangle.start();
+//			this.rectangle2.start();
 //		}
+	}
+	
+	public void move() {
+		rectangle.move(2);
+		rectangle2.move(1);
+	}
+	
+	public void intercept() {
+		
 	}
 	
 	/**

@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
+import co.edu.uptc.controller.GameListener;
 import co.edu.uptc.utilities.Constants;
 import co.edu.uptc.view.GamePanel;
 
@@ -45,13 +46,13 @@ public class MyRectangle extends Thread {
 	public void run() {
 		boolean enter = true;
 		while (this.isLife) {
-			if (y > Constants.MAX_Y-65) {
+			if (y > Constants.MAX_Y-70) {
 				enter = false;
 			} 
 			if (y < 0) {
 				enter = true;
 			}
-			y += (enter)?1:-1;
+			y += (enter)?2:-2;
 			try {
 				sleep(8);
 			} catch (InterruptedException e) {
@@ -59,9 +60,21 @@ public class MyRectangle extends Thread {
 			}
 		}
 	}
-	
-	public void move() {
 		
+	public void move(int n) {
+		if (n==1) {
+			if (GameListener.up && y > 0) {
+				y -= 1;
+			} else if (GameListener.down && y < Constants.MAX_Y-70) {
+				y += 1;
+			}
+		} else {
+			if (GameListener.w && y > 0) {
+				y -= 1;
+			} else if (GameListener.s && y < Constants.MAX_Y-70) {
+				y += 1;
+			}
+		}
 	}
 	
 	public boolean isLife() {

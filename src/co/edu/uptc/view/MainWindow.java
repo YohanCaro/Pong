@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import co.edu.uptc.controller.Control;
+import co.edu.uptc.controller.GameListener;
 import co.edu.uptc.utilities.Constants;
 
 public class MainWindow extends JFrame{
@@ -27,6 +28,8 @@ public class MainWindow extends JFrame{
 		control = new Control();		
 				
 		activar = false;
+		
+		this.addKeyListener(GameListener.getInstanceOf());
 		
 		panelJ = new GamePanel(this);
 		panelJ.repaint();

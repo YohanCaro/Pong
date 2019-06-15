@@ -15,6 +15,7 @@ public class Oval extends Thread {
 	private Color backgroundColor, borderColor;
 	private BasicStroke bs;
 	private boolean isAvailable;
+	private boolean isX, isY;
 	
 	public Oval(int x, int y, int size, Color backgroundColor, Color borderColor, BasicStroke bs) {
 		this.backgroundColor = backgroundColor;
@@ -24,6 +25,9 @@ public class Oval extends Thread {
 		this.y = y;
 		this.size = size;
 		isAvailable = true;
+		
+		isX = true;
+		isY = true;
 	}
 	
 	public void draw(Graphics2D g2) {
@@ -35,7 +39,6 @@ public class Oval extends Thread {
 	
 	@Override
 	public void run() {
-		boolean isX = true, isY = true;
 		while (isAvailable) {
 			x += isX?1:-1;
 			y += isY?2:-2;
@@ -51,13 +54,36 @@ public class Oval extends Thread {
 			if (y > Constants.MAX_Y) {
 				isY = false;
 			}
-			
+						
 			try {
 				sleep(15);
 			} catch (InterruptedException e) {
 				System.out.println("Hilo de la bolita se murió");
 			}
 		}
+	}
+	
+	public void intercept(MyRectangle rectangle) {
+		Ellipse2D elipse = new Ellipse2D.Double(x, y, size, size);
+		
+		if (elipse.intersects(new Rectangle2D.Double(rectangle.getX(), rectangle.getY(), rectangle.getWidth(),
+				rectangle.getHeight()))) {
+			System.out.println("in");
+			
+			if (rectangle.getY() > elipse.getY() || rectangle.getY()+rectangle.getHeight() < elipse.getY()) {
+				if (isY) {
+					isY = false;
+				} else {
+					isY = true;
+				}
+			}
+			
+			if (isX) {
+				isX = false;
+			} else {
+				isX = true;
+			}
+		} 
 	}
 	
 	/**
