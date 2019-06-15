@@ -45,9 +45,10 @@ public class MenuWindow extends JDialog {
 	
 	private void init() {
 		this.setLayout(new BorderLayout());
-		this.add(Box.createRigidArea(new Dimension(200, 10)), BorderLayout.WEST);
-		this.add(Box.createRigidArea(new Dimension(200, 10)), BorderLayout.EAST);
-		this.setBackground(Color.darkGray);
+		this.setUndecorated(true);
+		this.add(Box.createRigidArea(new Dimension(150, 10)), BorderLayout.WEST);
+		this.add(Box.createRigidArea(new Dimension(150, 10)), BorderLayout.EAST);
+		this.getContentPane().setBackground(Color.DARK_GRAY);
 		pushTitle();
 		panelButtons();
 		
@@ -63,6 +64,7 @@ public class MenuWindow extends JDialog {
 		leftButton.addActionListener(buttonsListener);
 		
 		this.setSize(500, 600);
+		this.setLocation((this.getX()+this.getWidth()-50), (this.getSize().height+this.getY())/10);
 		this.setTitle("MENU PONG");
 		this.setVisible(true);
 	}

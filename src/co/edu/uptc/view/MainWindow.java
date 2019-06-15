@@ -24,6 +24,7 @@ public class MainWindow extends JFrame {
 		this.setTitle("Juego!");
 		this.setSize(Constants.SIZE_WIDTH, Constants.SIZE_HEIGHT);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setLayout(new BorderLayout());
 		this.getContentPane().setBackground(Color.WHITE);
