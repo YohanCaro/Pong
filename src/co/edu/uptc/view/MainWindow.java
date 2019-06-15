@@ -1,19 +1,24 @@
 package co.edu.uptc.view;
 
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
-import java.io.IOException;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
+import co.edu.uptc.controller.ButtonsListener;
 import co.edu.uptc.controller.Control;
 import co.edu.uptc.controller.GameListener;
 import co.edu.uptc.utilities.Constants;
 
-public class MainWindow extends JFrame{
+public class MainWindow extends JFrame {
 	
-	private GamePanel panelJ;
+	private GamePanel gamePanel;
+	private MenuWindow menuWindow;
+//	private JPanel panelGroup;
 	private Control control;
+	private ButtonsListener buttonsListener;
 	private boolean activar;
 	
 	public MainWindow() {	
@@ -21,21 +26,26 @@ public class MainWindow extends JFrame{
 		this.setSize(Constants.SIZE_WIDTH, Constants.SIZE_HEIGHT);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
-		this.setVisible(true);
-		this.setLayout(null);
+		this.setLayout(new BorderLayout());
 		this.getContentPane().setBackground(Color.WHITE);
 		
-		control = new Control();		
-				
-		activar = false;
+		this.addKeyListener(buttonsListener);
+		control = new Control();
+		buttonsListener = new ButtonsListener(this);
 		
-		this.addKeyListener(GameListener.getInstanceOf());
+		gamePanel = new GamePanel(buttonsListener);
+		this.addKeyListener(GameListener.getInstanceOf(gamePanel));
+		this.add(gamePanel);
 		
-		panelJ = new GamePanel(this);
-		panelJ.repaint();
-		this.add(panelJ);
+		this.menuWindow = new MenuWindow(this);
+		
+//		this.init();
 	}
 	
+	public void init() {
+		
+	}
+			
 	public boolean isActivar() {
 		return activar;
 	}
@@ -44,20 +54,22 @@ public class MainWindow extends JFrame{
 		this.activar = activar;
 	}
 
-	public GamePanel getPanelJ() {
-		return panelJ;
-	}
-
-	public void setPanelJ(GamePanel panelJ) {
-		this.panelJ = panelJ;
+	public GamePanel getGamePanel() {
+		return gamePanel;
 	}
 
 	public Control getControl() {
 		return control;
 	}
 
-	public void setControl(Control control) {
-		this.control = control;
+	/**
+	 * Obtiene 
+	 * @return menuWindow
+	 */
+	public MenuWindow getMenuWindow() {
+		return menuWindow;
 	}
-		
+	
+	
+	
 }
