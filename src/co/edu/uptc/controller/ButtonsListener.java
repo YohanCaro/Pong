@@ -3,6 +3,8 @@ package co.edu.uptc.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import co.edu.uptc.utilities.Constants;
 import co.edu.uptc.utilities.Utilities;
 import co.edu.uptc.view.AboutDialog;
@@ -43,7 +45,13 @@ public class ButtonsListener implements ActionListener {
 			new AboutDialog();
 			break;
 		case Constants.ACTION_CLOSE_MENU_WINDOW:
-			System.exit(0);
+			Object [] opciones ={"Aceptar","Cancelar"};
+			int eleccion = JOptionPane.showOptionDialog(null, "¿Desea salir del juego?","Mensaje de Confirmacion!",
+			JOptionPane.YES_NO_OPTION,
+			JOptionPane.QUESTION_MESSAGE,null,opciones,"Aceptar");
+			if (eleccion == JOptionPane.YES_OPTION) {
+				System.exit(0);
+			}
 			break;
 		default:
 			break;
