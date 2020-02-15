@@ -13,7 +13,7 @@ import co.edu.uptc.utilities.Constants;
 public class MainWindow extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
-	private GamePanel gamePanel;
+	private GamePanel2Players gamePanel;
 	private MenuWindow menuWindow;
 //	private JPanel panelGroup;
 	private Control control;
@@ -33,7 +33,7 @@ public class MainWindow extends JFrame {
 		control = new Control();
 		buttonsListener = new ButtonsListener(this);
 		
-		gamePanel = new GamePanel(buttonsListener);
+		gamePanel = new GamePanel2Players(buttonsListener);
 		this.addKeyListener(GameListener.getInstanceOf(gamePanel));
 		this.add(gamePanel);
 		
@@ -54,7 +54,7 @@ public class MainWindow extends JFrame {
 		this.activar = activar;
 	}
 
-	public GamePanel getGamePanel() {
+	public GamePanel2Players getGamePanel() {
 		return gamePanel;
 	}
 

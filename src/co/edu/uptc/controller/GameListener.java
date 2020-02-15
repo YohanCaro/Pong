@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import co.edu.uptc.view.GamePanel;
+import co.edu.uptc.view.GamePanel2Players;
 
 /** Clase GameListener.java - 
  *
@@ -16,10 +16,10 @@ import co.edu.uptc.view.GamePanel;
 public class GameListener extends KeyAdapter {
 	
 	public static boolean up, down, w, s, enter, space;
-	private GamePanel gamePanel;
+	private GamePanel2Players gamePanel;
 	private static GameListener gameListener;
 	
-	private GameListener(GamePanel gamePanel) {
+	private GameListener(GamePanel2Players gamePanel) {
 		this.gamePanel = gamePanel;
 	}
 	
@@ -109,7 +109,7 @@ public class GameListener extends KeyAdapter {
 		
 	}
 	
-	public static GameListener getInstanceOf(GamePanel gamePanel) {
+	public static GameListener getInstanceOf(GamePanel2Players gamePanel) {
 		if (gameListener == null) {
 			gameListener = new GameListener(gamePanel);
 		}
